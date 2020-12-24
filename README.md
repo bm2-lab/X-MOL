@@ -17,7 +17,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
 ## Fine-tuning to prediction tasks
 modify the **configuration file**: <br>
     `conf_pre/ft_conf.sh` <br>
-the terms that need to be modified are high-lighted, like: <br>
+the terms that need to be modified are **high-lighted**, like: <br>
     `### attention, this term need to be modified` <br>
     `vocab_path="./package/molecule_dict_zinc250k"` <br>
     `### attention, this term need to be modified` <br>
@@ -48,11 +48,11 @@ run: <br>
 ## Fine-tuning to generation tasks
 modify the configuration file: <br>
     `ft_conf` <br>
-the terms that need to be modified are high-lighted, like: <br>
-    ```### attention, this term need to be modified \n
-    vocab_path="./package/molecule_dict_zinc250k" \n
-    ### attention, this term need to be modified \n
-    CONFIG_PATH="./package/ernie_zinc250k_config.json"``` <br>
+the terms that need to be modified are **high-lighted**, like: <br>
+    `### attention, this term need to be modified` <br>
+    `vocab_path="./package/molecule_dict_zinc250k"` <br>
+    `### attention, this term need to be modified` <br>
+    `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
 <br>
 if the vocab list needs to be extended: <br>
 modified the `main()` in `finetune_launch_local.py`: <br>
