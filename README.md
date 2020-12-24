@@ -49,9 +49,9 @@ run: <br>
 modify the configuration file: <br>
     `ft_conf` <br>
 the terms that need to be modified are high-lighted, like: <br>
-    ```### attention, this term need to be modified <br>
-    vocab_path="./package/molecule_dict_zinc250k" <br>
-    ### attention, this term need to be modified <br>
+    ```### attention, this term need to be modified \n
+    vocab_path="./package/molecule_dict_zinc250k" \n
+    ### attention, this term need to be modified \n
     CONFIG_PATH="./package/ernie_zinc250k_config.json"``` <br>
 <br>
 if the vocab list needs to be extended: <br>
@@ -65,8 +65,8 @@ run: <br>
 
 ## Change the number of GPUs used in the training process
 for both the two type tasks: <br>
-`finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
-modify valid value of the two arguments in the argparse term `multip_g` <br>
+modify `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
+valid value of the two arguments in the argparse term `multip_g` <br>
     1. `nproc_per_node` <br>
     2. `selected_gpus` <br>
 
