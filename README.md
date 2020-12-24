@@ -9,8 +9,8 @@ computing　—|　　　　　　　|Molecule generation <br>
 　　　　　　　　　　　　　　　|Molecule optimization <br>
 
 pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
-environment python : 
-environment nccl : 
+environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 
 ## fine-tuning to prediction tasks
 sh train_ft.sh <br>
