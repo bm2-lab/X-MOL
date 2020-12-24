@@ -1,0 +1,86 @@
+The absorption of drugA can be decreased when combined with drugB	0
+The bioavailability of drugA can be decreased when combined with drugB	1
+The bioavailability of drugA can be increased when combined with drugB	2
+The metabolism of drugA can be decreased when combined with drugB	3
+The metabolism of drugA can be increased when combined with drugB	4
+The protein binding of drugA can be decreased when combined with drugB	5
+The risk of a hypersensitivity reaction to drugA is increased when it is combined with drugB	6
+The risk or severity of QTc prolongation can be increased when drugA is combined with drugB	7
+The risk or severity of adverse effects can be increased when drugA is combined with drugB	8
+The risk or severity of bleeding can be increased when drugA is combined with drugB	9
+The risk or severity of heart failure can be increased when drugA is combined with drugB	10
+The risk or severity of hyperkalemia can be increased when drugA is combined with drugB	11
+The risk or severity of hypertension can be increased when drugA is combined with drugB	12
+The risk or severity of hypotension can be increased when drugA is combined with drugB	13
+The serum concentration of drugA can be decreased when it is combined with drugB	14
+The serum concentration of drugA can be increased when it is combined with drugB	15
+The serum concentration of the active metabolites of drugA can be increased when drugA is used in combination with drugB	16
+The serum concentration of the active metabolites of drugA can be reduced when drugA is used in combination with drugB resulting in a loss in efficacy	17
+The therapeutic efficacy of drugA can be decreased when used in combination with drugB	18
+The therapeutic efficacy of drugA can be increased when used in combination with drugB	19
+drugA can cause a decrease in the absorption of drugB resulting in a reduced serum concentration and potentially a decrease in efficacy	20
+drugA can cause an increase in the absorption of drugB resulting in an increased serum concentration and potentially a worsening of adverse effects	21
+drugA may decrease effectiveness of drugB as a diagnostic agent	22
+drugA may decrease the analgesic activities of drugB	23
+drugA may decrease the anticoagulant activities of drugB	24
+drugA may decrease the antihypertensive activities of drugB	25
+drugA may decrease the antiplatelet activities of drugB	26
+drugA may decrease the bronchodilatory activities of drugB	27
+drugA may decrease the cardiotoxic activities of drugB	28
+drugA may decrease the diuretic activities of drugB	29
+drugA may decrease the excretion rate of drugB which could result in a higher serum level	30
+drugA may decrease the neuromuscular blocking activities of drugB	31
+drugA may decrease the sedative activities of drugB	32
+drugA may decrease the stimulatory activities of drugB	33
+drugA may decrease the vasoconstricting activities of drugB	34
+drugA may increase the QTc-prolonging activities of drugB	35
+drugA may increase the adverse neuromuscular activities of drugB	36
+drugA may increase the analgesic activities of drugB	37
+drugA may increase the anticholinergic activities of drugB	38
+drugA may increase the anticoagulant activities of drugB	39
+drugA may increase the antihypertensive activities of drugB	40
+drugA may increase the antiplatelet activities of drugB	41
+drugA may increase the antipsychotic activities of drugB	42
+drugA may increase the arrhythmogenic activities of drugB	43
+drugA may increase the atrioventricular blocking (AV block) activities of drugB	44
+drugA may increase the bradycardic activities of drugB	45
+drugA may increase the bronchoconstrictory activities of drugB	46
+drugA may increase the cardiotoxic activities of drugB	47
+drugA may increase the central nervous system depressant (CNS depressant) activities of drugB	48
+drugA may increase the central nervous system depressant (CNS depressant) and hypertensive activities of drugB	49
+drugA may increase the central neurotoxic activities of drugB	50
+drugA may increase the constipating activities of drugB	51
+drugA may increase the dermatologic adverse activities of drugB	52
+drugA may increase the excretion rate of drugB which could result in a lower serum level and potentially a reduction in efficacy	53
+drugA may increase the fluid retaining activities of drugB	54
+drugA may increase the hepatotoxic activities of drugB	55
+drugA may increase the hypercalcemic activities of drugB	56
+drugA may increase the hyperglycemic activities of drugB	57
+drugA may increase the hyperkalemic activities of drugB	58
+drugA may increase the hypertensive activities of drugB	59
+drugA may increase the hypocalcemic activities of drugB	60
+drugA may increase the hypoglycemic activities of drugB	61
+drugA may increase the hypokalemic activities of drugB	62
+drugA may increase the hyponatremic activities of drugB	63
+drugA may increase the hypotensive activities of drugB	64
+drugA may increase the hypotensive and central nervous system depressant (CNS depressant) activities of drugB	65
+drugA may increase the immunosuppressive activities of drugB	66
+drugA may increase the myelosuppressive activities of drugB	67
+drugA may increase the myopathic rhabdomyolysis activities of drugB	68
+drugA may increase the nephrotoxic activities of drugB	69
+drugA may increase the neuroexcitatory activities of drugB	70
+drugA may increase the neuromuscular blocking activities of drugB	71
+drugA may increase the neurotoxic activities of drugB	72
+drugA may increase the orthostatic hypotensive activities of drugB	73
+drugA may increase the ototoxic activities of drugB	74
+drugA may increase the photosensitizing activities of drugB	75
+drugA may increase the respiratory depressant activities of drugB	76
+drugA may increase the sedative activities of drugB	77
+drugA may increase the serotonergic activities of drugB	78
+drugA may increase the stimulatory activities of drugB	79
+drugA may increase the tachycardic activities of drugB	80
+drugA may increase the thrombogenic activities of drugB	81
+drugA may increase the ulcerogenic activities of drugB	82
+drugA may increase the vasoconstricting activities of drugB	83
+drugA may increase the vasodilatory activities of drugB	84
+drugA may increase the vasopressor activities of drugB	85
