@@ -8,6 +8,9 @@ transformer　—|——— X-MOL ———|Chemical reaction prediction <br>
 computing　—|　　　　　　　|Molecule generation <br>
 　　　　　　　　　　　　　　　|Molecule optimization <br>
 
+pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi
+environment python : 
+environment nccl : 
 
 ## fine-tuning to prediction tasks
 sh train_ft.sh <br>
