@@ -1,38 +1,30 @@
-task_name="seq2seq_local_test"
-submitter="xuedongyu"
-hdfs_path="afs://xingtian.afs.baidu.com:9902"
-ugi="NLP_KM_Data,NLP_km_2018"
-hdfs_output="./output/"
+task_name="seq2seq"
+submitter=" "
+hdfs_path=" "
+ugi=" "
+hdfs_output=" "
 
-slurm_train_files_dir="afs://xingtian.afs.baidu.com:9902/user/NLP_KM_Data/liyukun01/bert/train_data/ernie_zh_gen_v1"
-testdata_dir="./data"
+slurm_train_files_dir=""
+testdata_dir=""
 
-#vocab_path="./package/molecule_dict"
-#CONFIG_PATH="./package/ernie_config.json"
+### attention, this term need to be modified
 vocab_path="./package/molecule_dict_zinc250k"
+### attention, this term need to be modified
 CONFIG_PATH="./package/ernie_zinc250k_config.json"
 
+### attention, this term need to be modified
+init_model="path_to_pre-trained_model/"
 
-#hdfs_init_model="/user/NLP_KM_Data/zhanghan/step_1410000_20200207162133.tar"
-init_model="./package/model/r2ramp/step_400000"
-CKPT_PATH='./checkpoints/gd_gen_epoch_99'
-#CKPT_PATH="./package/model/r2ramp/step_400000"
-#init_model="./output_store/opt_scale0701_cold/epoch_70"
-#init_model=""
+#CKPT_PATH='path_to_checkpoint_model/'
 
-#stream_job="yq01-v100-box-0-cluster:119661"
 
 finetuning_task="seq2seq"
-#finetuning_data="./package/task_data/zinc250k_opt/"
-finetuning_data="./package/task_data/zinc250k_gd/"
-#finetuning_data="./package/task_data/pt_test"
+### attention, this term need to be modified
+finetuning_data="path_to_task_data/zinc250k_gd/"
 task_type="normal"
 tokenizer="MolTokenizer"
 
-queue="yq01-p40-4-8"
-#queue="yq01-v100-box-nlp-1-8"
-#queue="yq01-v100-box-1-8"
-#queue="yq01-p40-box-nlp-1-8"
+queue=""
 nodes=1
 
 init_new_sent_embedding="True"
@@ -44,15 +36,14 @@ random_noise="False"
 warmup_proportion=0.1
 lr_scheduler="linear_warmup_decay"
 learning_rate=5e-5
+# attention
 epoch=100
-#epoch=1
+# attention
 valid_step=1000
 
 batch_size=16
 in_tokens="false"
 
-#max_src_len=320
-#max_tgt_len=64
 max_src_len=256
 max_tgt_len=256
 tokenized_input="false"
@@ -61,11 +52,14 @@ weight_decay=0.01
 label_smooth=0.0
 mask_prob=0.0
 
-#max_dec_len=32
 max_dec_len=256
+### attention, this term need to be modified
+### for generation task, the decoding_strategy should be set as "sampling", which means random sampling is applied in the generation of new SMILES
+### and "beam_search" is design for optimization task. is should be noticed that, in beam_search, only one result could be generated for one input
 decoding_strategy="sampling"
 #decoding_strategy="beam_search"
 beam_size=4
+### scale the probability in random sampling
 T=-1.0
 temperature=1.0
 tgt_type_id=1
