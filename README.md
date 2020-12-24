@@ -15,7 +15,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
     environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 <br>
 ## Fine-tuning to prediction tasks
-modify the configuration file: <br>
+modify the **configuration file**: <br>
     `conf_pre/ft_conf.sh` <br>
 the terms that need to be modified are high-lighted, like: <br>
     `### attention, this term need to be modified` <br>
@@ -23,20 +23,24 @@ the terms that need to be modified are high-lighted, like: <br>
     `### attention, this term need to be modified` <br>
     `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
 <br>
-fine-tuning to classification/regression: <br>
+fine-tuning to **classification/regression**: <br>
 modify the `main()` in `run_classifier.py` <br>
     1. for classification : `task_type = 'cls'` <br>
     2. for regression : `task_type = 'reg'` <br>
-fine-tuning to single-input/multiple-input: <br>
+<br>
+fine-tuning to **single-input/multiple-input**: <br>
 modify the `main()` in `run_classifier.py` <br>
     1. for single-inpt : `multi_input = False` <br>
     2. for multiple-input : `multi_input = False` <br>
+<br>
 if the vocab list needs to be extended:<br>
 modified the `main()` in `finetune_launch_local.py`: <br>
     `extend_vocab = False` <br>
+<br>
 for multiple-input tasks, the sent-embedding is needed to be extended:
 modified the `main()` in `finetune_launch_local.py`: <br>
     `extend_sent = True` <br>
+<br>
 run: <br>
     `sh train_ft.sh` <br>
     `sh train_lrtemb.sh` (knowlegde embedding) <br>
@@ -45,18 +49,20 @@ run: <br>
 modify the configuration file: <br>
     `ft_conf` <br>
 the terms that need to be modified are high-lighted, like: <br>
-    `### attention, this term need to be modified` <br>
-    `vocab_path="./package/molecule_dict_zinc250k"` <br>
-    `### attention, this term need to be modified` <br>
-    `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
+    ```### attention, this term need to be modified <br>
+    vocab_path="./package/molecule_dict_zinc250k" <br>
+    ### attention, this term need to be modified <br>
+    CONFIG_PATH="./package/ernie_zinc250k_config.json"``` <br>
+<br>
 if the vocab list needs to be extended: <br>
 modified the `main()` in `finetune_launch_local.py`: <br>
     `extend_vocab = False` <br>
     `extend_fc = False` <br>
+<br>
 run: <br>
     `sh train_ft.sh` (DL&GD generation tasks) <br>
     `sh train_opt.sh` (optimization tasks) <br>
-    
+
 ## Change the number of GPUs used in the training process
 for both the two type tasks: <br>
 `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
@@ -65,7 +71,7 @@ modify valid value of the two arguments in the argparse term `multip_g` <br>
     2. `selected_gpus` <br>
 
 ## Extend the vocab list
-the rules in the extension of vocabulary list: <br>
+**the rules in the extension of vocabulary list:** <br>
     1. the extension must based on the `X-MOL_dict`, as well as the vocabularg list used in pre_training. <br>
     2. the extended vocab must be placed behind the original vocab (the index is start from 122). <br>
     3. do not forget open the `extend_vocab` in the `finetune_launch.py/finetune_launch_local.py`. <br>
