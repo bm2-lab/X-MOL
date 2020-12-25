@@ -37,7 +37,7 @@ if the vocab list needs to be extended:<br>
 modified the `main()` in `finetune_launch_local.py`: <br>
     `extend_vocab = False` <br>
 <br>
-for multiple-input tasks, the sent-embedding is needed to be extended:
+for multiple-input tasks, the sent-embedding is needed to be extended: <br>
 modified the `main()` in `finetune_launch_local.py`: <br>
     `extend_sent = True` <br>
 <br>
