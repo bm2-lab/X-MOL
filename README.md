@@ -36,7 +36,9 @@ modify the `main()` in `run_classifier.py` <br>
 fine-tuning to **single-input/multiple-input**: <br>
 modify the `main()` in `run_classifier.py` <br>
     1. for single-inpt : `multi_input = False` <br>
-    2. for multiple-input : `multi_input = False` <br>
+    2. for multiple-input : `multi_input = True` <br>
+    modified the `main()` in `finetune_launch.py`: <br>
+    `extend_sent = True` <br>
 <br>
 for **molecule property prediction task**: <br>
     1. **repeat training**: <br>
@@ -51,10 +53,6 @@ for **molecule property prediction task**: <br>
 if the **vocab list** needs to be extended:<br>
 modified the `main()` in `finetune_launch.py`: <br>
     `extend_vocab = False` <br>
-<br>
-for **multiple-input tasks**, the sent-embedding is needed to be extended: <br>
-modified the `main()` in `finetune_launch.py`: <br>
-    `extend_sent = True` <br>
 <br>
 run: <br>
     `sh train_ft.sh` <br>
@@ -71,8 +69,8 @@ the terms that need to be modified are **high-lighted**, like: <br>
 <br>
 if the vocab list needs to be extended: <br>
 modified the `main()` in `finetune_launch_local.py`: <br>
-    `extend_vocab = False` <br>
-    `extend_fc = False` <br>
+    `extend_vocab = True` <br>
+    `extend_fc = True` <br>
 <br>
 run: <br>
     `sh train_ft.sh` (DL&GD generation tasks) <br>
