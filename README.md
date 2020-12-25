@@ -2,18 +2,23 @@
 **large-scale pre-training for molecular understanding and diverse molecular analysis** <br>
 <br>
 Work-Flow:<br>
-`......................................|Molecular property prediction` <br>
-`.........tremendous data|.............|Drug-drug inteartion prediction` <br>
-`.large-scale transformer|----X-MOL----|Chemical reaction prediction` <br>
-`powerful computing power|.............|Molecule generation` <br>
-`......................................|Molecule optimization` <br>
+`.......................................|Molecular property prediction...` <br>
+`..........tremendous data|.............|Drug-drug inteartion prediction.` <br>
+`..large-scale transformer|----X-MOL----|Chemical reaction prediction....` <br>
+`.powerful computing power|.............|Molecule generation.............` <br>
+`.......................................|Molecule optimization...........` <br>
 <br>
+environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl should be downloaded and decompressed into both the two folder) <br>
 <br>
     pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
     environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
     environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 <br>
+requirements: <br>
+1. python3 <br>
+2. RDKit <br>
+
 ## Fine-tuning to prediction tasks
 modify the **configuration file**: <br>
     `conf_pre/ft_conf.sh` <br>
@@ -33,12 +38,22 @@ modify the `main()` in `run_classifier.py` <br>
     1. for single-inpt : `multi_input = False` <br>
     2. for multiple-input : `multi_input = False` <br>
 <br>
-if the vocab list needs to be extended:<br>
-modified the `main()` in `finetune_launch_local.py`: <br>
+for **molecule property prediction task**: <br>
+    1. **repeat training**: <br>
+        modified `finetune_launch.py`, the code in `if __name__ == "__main__":`: <br>
+        `while fine_tune_rep < the_numeber_of_repeating_times:` <br>
+    2. **random/scaffold split**: <br>
+        1. modified `finetune_launch.py`, the code in `if __name__ == "__main__":`: <br>
+            keep the `subprocess.call("python3 pt_scaffold_split.py", shell=True)` <br>
+        2. modified `pt_scaffold_split.py`, the code in `if __name__ == "__main__":`: <br>
+            `sep_file_ex('path_to_training_data_folder', split_func='scaffold', amp=False, ampn=(0,0,0))` <br>
+<br>
+if the **vocab list** needs to be extended:<br>
+modified the `main()` in `finetune_launch.py`: <br>
     `extend_vocab = False` <br>
 <br>
-for multiple-input tasks, the sent-embedding is needed to be extended: <br>
-modified the `main()` in `finetune_launch_local.py`: <br>
+for **multiple-input tasks**, the sent-embedding is needed to be extended: <br>
+modified the `main()` in `finetune_launch.py`: <br>
     `extend_sent = True` <br>
 <br>
 run: <br>
@@ -64,7 +79,7 @@ run: <br>
     `sh train_opt.sh` (optimization tasks) <br>
 
 ## Change the number of GPUs used in the training process
-for both the two type tasks: <br>
+for **both the two type tasks**: <br>
 modify `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
 valid value of the two arguments in the argparse term `multip_g` <br>
     1. `nproc_per_node` <br>
@@ -76,3 +91,4 @@ valid value of the two arguments in the argparse term `multip_g` <br>
     2. the extended vocab must be placed behind the original vocab (the index is start from 122). <br>
     3. do not forget open the `extend_vocab` in the `finetune_launch.py/finetune_launch_local.py`. <br>
     4. once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
+
