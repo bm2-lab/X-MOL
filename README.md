@@ -1,5 +1,4 @@
-# X-MOL
-**large-scale pre-training for molecular understanding and diverse molecular analysis** <br>
+# X-MOL : large-scale pre-training for molecular understanding and diverse molecular analysis
 <br>
 Work-Flow:<br>
 `.......................................|Molecular property prediction...` <br>
@@ -90,3 +89,5 @@ valid value of the two arguments in the argparse term `multip_g` <br>
     3. do not forget to turn on the `extend_vocab` in the `finetune_launch.py/finetune_launch_local.py`. <br>
     4. once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
 
+## Contact
+1810538@tongji.edu.cn or qiliu@tongji.edu.cn
