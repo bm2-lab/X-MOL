@@ -1,30 +1,33 @@
-
 task="cls"
 gipus=8
 
-task_name="MOLft_${task}_normal_ngram_50e"
-submitter="xuedongyu"
-fs_name="afs://xingtian.afs.baidu.com:9902"
-fs_ugi="NLP_KM_Data,NLP_km_2018"
+task_name="MOLft_${task}"
+submitter=""
+fs_name=""
+fs_ugi=""
 output_path="./ouptput/fine_tune/${task_name}"
 
 mpi_on_k8s=1
 mount_afs="true"
 
-slurm_train_files_dir="afs://xingtian.afs.baidu.com:9902/user/NLP_KM_Data/zhanghan/kg_nerl_ids"
-testdata_dir="./package/baidu_no_search_v2_valid/"
+slurm_train_files_dir=""
+testdata_dir=""
 
-vocab_path="./package/mol/molecule_dict_DEEPDDI"
-CONFIG_PATH="./package/mol/ernie_DEEPDDI_config.json"
+### attention, this term need to be modified
+vocab_path="./package/mol/molecule_dict"
+### attention, this term need to be modified
+CONFIG_PATH="./package/mol/ernie_config.json"
 
 
 stream_job=""
 finetuning_task=$task
-finetuning_data="./package/task_data/DEEPDDI"
+#
+finetuning_data="path_to_training_data_folder"
 
 nodes=1
 
 #init_model=""
+### attention, this term need to be modified
 init_model="./data/model/step_400000"
 #CKPT_PATH="./checkpoints/step_54000"
 other_data=""
@@ -38,19 +41,24 @@ loss_scaling=128
 generate_neg_sample="False"
 
 IS_DISTRIBUTED="false"
+### attention, this term need to be modified
 EPOCH=40
+### attention, this term need to be modified
 VALID_STEPS=1800
 SAVE_STEPS=5400
 WARMUP_STEPS=0
+### attention, this term need to be modified
 BATCH_SIZE=16
 NUM_HEAD=12
+### attention, this term need to be modified
 LR_RATE=5e-5
 WEIGHT_DECAY=0.01
 D_MODEL=768
 NUM_LAYER=12
 MAX_LEN=512
 export TOKENIZER="MolTokenizer"
-num_labels=86
+### attention, this term need to be modified
+num_labels=2
 
 #export
 export MODEL_PATH=$init_model
