@@ -101,7 +101,7 @@ valid value of the two arguments in the argparse term `multip_g` <br>
 ## Extend the vocab list
 **the rules in the extension of vocabulary list** : <br>
     1. the extension must based on the `X-MOL_dict`, as well as the vocabularg list used in pre_training. <br>
-    2. the extended vocab must be placed behind the original vocab (the index is start from 122). <br>
+    2. the extended vocab must be placed behind the original vocabs (the index of new vocabs is start from 122). <br>
     3. do not forget to turn on the `extend_vocab` in the `finetune_launch.py/finetune_launch_local.py`. <br>
     4. do not forget to modify the `"vocab_size"` in model config <br>
     5. once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
