@@ -9,25 +9,25 @@ In silico modelling and analysis of small molecules substantially accelerates th
 Specifically, our generative pre-training strategy is implemented by an encoder-decoder architecture, but it is different from traditional encoder-decoder architectures such as those used in neural machine translation (NMT), as the encoder and decoder in X-MOL share the same layers. In X-MOL, the input random SMILES and output random SMILES are sent into the model simultaneously, and the output random SMILES is totally masked. In addition, only a unidirectional attention operation can be performed within the output random SMILES, which means that each character in the output random SMILES can pay attention only to itself and the previously generated characters. In this way, the shared-layer encoder-decoder architecture in X-MOL is able to unifiy the semantic comprehension of encoder and decoder, also the shared-layer architecture could reduce the number of parameters significantly compared with traditional encoder-decoder architectures. <br>
 
 ## Work-flow of X-MOL
-
-`.......................................|Molecular property prediction...` <br>
-`..........tremendous data|.............|Drug-drug inteartion prediction.` <br>
-`..large-scale transformer|----X-MOL----|Chemical reaction prediction....` <br>
-`.powerful computing power|.............|Molecule generation.............` <br>
-`.......................................|Molecule optimization...........` <br>
+`........Pre-training.............................Fine-tuning..............` <br>
+<br>
+`.........................................|Molecular property prediction...` <br>
+`..........tremendous data|...............|Drug-drug inteartion prediction.` <br>
+`..large-scale transformer|---> X-MOL --->|Chemical reaction prediction....` <br>
+`.powerful computing power|...............|Molecule generation.............` <br>
+`.........................................|Molecule optimization...........` <br>
 <br>
 **we provide the pre-trained X-MOL and the script of fine-tuning the X-MOL as well as the environment** <br>
 environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folder <br>
-
-<br>**The provided environmet** :
+<br>
+**The provided environmet** :
 - pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
-- environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
-- environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd 
-
+- environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+- environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 **requirements** : 
-- python3 (although the environment of model traininng, python2 is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
-- RDKit <br>
+- python3 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
+- RDKit (2019.09.1.0)<br>
 
 ## Fine-tuning to prediction tasks
 
