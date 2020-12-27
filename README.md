@@ -24,13 +24,12 @@ environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folder <br>
 <br>
 **The provided environmet :** <br>
-- pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
-- environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
-- environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
-<br> 
+    - pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
+    - environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+    - environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 **requirements :** <br> 
-- python3 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
-- RDKit (2019.09.1.0) <br>
+    - python3 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
+    - RDKit (2019.09.1.0) <br>
 
 ## Fine-tuning to prediction tasks
 1. modify the **configuration file** : <br>
