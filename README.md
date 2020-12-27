@@ -28,7 +28,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
     - environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
     - environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 **requirements :** <br> 
-    - python3 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
+    - python3.7 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
     - RDKit (2019.09.1.0) <br>
 
 ## Fine-tuning to prediction tasks
@@ -94,8 +94,8 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
 for **both the two type tasks** : <br>
 modify `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
 valid value of the two arguments in the argparse term `multip_g` <br>
-    1. `nproc_per_node` <br>
-    2. `selected_gpus` <br>
+    1. `nproc_per_node` : GPU numbers <br>
+    2. `selected_gpus` : GPU ids<br>
 
 ## Extend the vocab list
 **the rules in the extension of vocabulary list** : <br>
