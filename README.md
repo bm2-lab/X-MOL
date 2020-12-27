@@ -1,6 +1,11 @@
 # X-MOL : large-scale pre-training for molecular understanding and diverse molecular analysis
 <br>
-Work-Flow:<br>
+
+# Introduction of X-MOL
+In silico modelling and analysis of small molecules substantially accelerates the process of drug development. Representing and understanding molecules is the fundamental step for various in silico molecular analysis tasks. Traditionally, these molecular analysis tasks have been investigated individually and separately. In this study, we presented X-MOL, which applies large-scale pre-training technology on 1.1 billion molecules for molecular understanding and representation, and then, carefully designed fine-tuning was performed to accommodate diverse downstream molecular analysis tasks, including molecular property prediction, chemical reaction analysis, drug-drug interaction prediction, de novo generation of molecules and molecule optimization. As a result, X-MOL was proven to achieve state-of-the-art results on all these molecular analysis tasks with good model interpretation ability. Collectively, taking advantage of super large-scale pre-training data and super-computing power, our study practically demonstrated the utility of the idea of "mass makes miracles" in molecular representation learning and downstream in silico molecular analysis, indicating the great potential of using large-scale unlabelled data with carefully designed pre-training and fine-tuning strategies to unify existing molecular analysis tasks and substantially enhance the performance of each task. <br>
+ In our study, X-MOL adopts a well-designed pre-training strategy to learn and understand the SMILES representation efficiently. Specifically, X-MOL designs a generative model during pre-training. In this way, the model is trained to generate a valid and equivalent SMILES representation from an input SMILES representation of the same molecule. This generative training strategy ultimately results in a pre-trained model with a good understanding of the SMILES representation, and it can generate the correct SMILES of the given molecule quite well. As a result, X-MOL builds a super large-scale pre-training model based on the Transformer27, which is composed of 12 encoder layers, 768-dimensional hidden units and 12 attention heads. <br>
+
+# Work-flow of X-MOL
 `.......................................|Molecular property prediction...` <br>
 `..........tremendous data|.............|Drug-drug inteartion prediction.` <br>
 `..large-scale transformer|----X-MOL----|Chemical reaction prediction....` <br>
