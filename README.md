@@ -21,14 +21,13 @@ environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folder <br>
 
 <br>**The provided environmet** :
-
-​	- pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>	- environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>	- environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd 
+- pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
+- environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+- environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd 
 
 **requirements** : 
-
-​	- python3 (although the environment of model traininng, python2 is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
-
-​	- RDKit <br>
+- python3 (although the environment of model traininng, python2 is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
+- RDKit <br>
 
 ## Fine-tuning to prediction tasks
 
@@ -57,16 +56,16 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
       modified `finetune_launch.py`, the code in `if __name__ == "__main__":`: <br>
       `while fine_tune_rep < the_numeber_of_repeating_times:` <br>
    2. **random/scaffold split**: <br>
-      1. modified `finetune_launch.py`, the code in `if __name__ == "__main__":`: <br>
+      - modified `finetune_launch.py`, the code in `if __name__ == "__main__":`: <br>
          keep the `subprocess.call("python3 pt_scaffold_split.py", shell=True)` <br>
-      2. modified `pt_scaffold_split.py`, the code in `if __name__ == "__main__":`: <br>
+      - modified `pt_scaffold_split.py`, the code in `if __name__ == "__main__":`: <br>
          `sep_file_ex('path_to_training_data_folder', split_func='scaffold', amp=False, ampn=(0,0,0))` <br>
          <br>
 5. if the **vocab list** needs to be extended:<br>
    modified the `main()` in `finetune_launch.py`: <br>
     `extend_vocab = False` <br>
    <br>
-6. run: <br>
+6. **run**: <br>
    `sh train_ft.sh` <br>
    `sh train_lrtemb.sh` (knowlegde embedding) <br>
 
@@ -80,12 +79,12 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
    `### attention, this term need to be modified` <br>
    `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
    <br>
-2. if the vocab list needs to be extended: <br>
+2. if the **vocab list** needs to be extended: <br>
    modified the `main()` in `finetune_launch_local.py`: <br>
     `extend_vocab = True` <br>
     `extend_fc = True` <br>
    <br>
-3. run: <br>
+3. **run**: <br>
    `sh train_ft.sh` (DL&GD generation tasks) <br>
    `sh train_opt.sh` (optimization tasks) <br>
 
