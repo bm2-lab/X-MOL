@@ -39,8 +39,8 @@ requirements: <br>
     1. for classification : `task_type = 'cls'` <br>
     2. for regression : `task_type = 'reg'` <br>
 <br>
-3 .fine-tuning to **single-input/multiple-input**: <br>
-modify the `main()` in `run_classifier.py` <br>
+3. fine-tuning to **single-input/multiple-input**: <br>
+    modify the `main()` in `run_classifier.py` <br>
     1. for single-inpt : `multi_input = False` <br>
     2. for multiple-input : `multi_input = True` <br>
     modified the `main()` in `finetune_launch.py`: <br>
