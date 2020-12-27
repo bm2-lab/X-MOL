@@ -17,6 +17,8 @@ Specifically, our generative pre-training strategy is implemented by an encoder-
 `.powerful computing power|...............|Molecule generation.............` <br>
 `.........................................|Molecule optimization...........` <br>
 <br>
+
+## Environment
 **we provide the pre-trained X-MOL and the script of fine-tuning the X-MOL as well as the environment** <br>
 environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folder <br>
@@ -25,12 +27,12 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
 - pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
 - environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
 - environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
+<br> 
 **requirements** : 
 - python3 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
-- RDKit (2019.09.1.0)<br>
+- RDKit (2019.09.1.0) <br>
 
 ## Fine-tuning to prediction tasks
-
 1. modify the **configuration file**: <br>
    `conf_pre/ft_conf.sh` <br>
    the terms that need to be modified are **high-lighted**, like: <br>
@@ -71,7 +73,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
 
 ## Fine-tuning to generation tasks
 
-1. modify the configuration file: <br>
+1. modify the **configuration file**: <br>
    `ft_conf` <br>
    the terms that need to be modified are **high-lighted**, like: <br>
    `### attention, this term need to be modified` <br>
@@ -97,7 +99,6 @@ valid value of the two arguments in the argparse term `multip_g` <br>
     2. `selected_gpus` <br>
 
 ## Extend the vocab list
-
 **the rules in the extension of vocabulary list:** <br>
     1. the extension must based on the `X-MOL_dict`, as well as the vocabularg list used in pre_training. <br>
     2. the extended vocab must be placed behind the original vocab (the index is start from 122). <br>
@@ -105,5 +106,4 @@ valid value of the two arguments in the argparse term `multip_g` <br>
     4. once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
 
 ## Contact
-
 1810538@tongji.edu.cn or qiliu@tongji.edu.cn
