@@ -13,13 +13,13 @@ Specifically, our generative pre-training strategy is implemented by an encoder-
 `.powerful computing power|.............|Molecule generation.............` <br>
 `.......................................|Molecule optimization...........` <br>
 <br>
-** we provide the pre-trained X-MOL and the script of fine-tuning the X-MOL as well as the environment
+** we provide the pre-trained X-MOL and the script of fine-tuning the X-MOL as well as the environment** <br>
 environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folder <br>
 <br>
-    pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
-    environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
-    environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
+    - pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
+    - environment python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+    - environment nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 <br>
 requirements: <br>
 1. python3 (although the environment of model traininng, python2 is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
@@ -28,14 +28,14 @@ requirements: <br>
 ## Fine-tuning to prediction tasks
 1. modify the **configuration file**: <br>
     `conf_pre/ft_conf.sh` <br>
-the terms that need to be modified are **high-lighted**, like: <br>
+    the terms that need to be modified are **high-lighted**, like: <br>
     `### attention, this term need to be modified` <br>
     `vocab_path="./package/molecule_dict_zinc250k"` <br>
     `### attention, this term need to be modified` <br>
     `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
 <br>
 2. fine-tuning to **classification/regression**: <br>
-modify the `main()` in `run_classifier.py` <br>
+    modify the `main()` in `run_classifier.py` <br>
     1. for classification : `task_type = 'cls'` <br>
     2. for regression : `task_type = 'reg'` <br>
 <br>
