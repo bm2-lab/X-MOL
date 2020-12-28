@@ -48,7 +48,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
       <br>
 3. Fine-tuning to **single-input/multiple-input** : <br>
    Modify the `main()` in `run_classifier.py` <br>
-   1. For single-inpt : `multi_input = False` <br>
+   1. For single-input : `multi_input = False` <br>
    2. For multiple-input : `multi_input = True` <br>
       Modify the `main()` in `finetune_launch.py`: <br>
       `extend_sent = True` <br>
