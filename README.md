@@ -9,15 +9,16 @@ In our study, X-MOL adopts a well-designed pre-training strategy to learn and un
 Specifically, our generative pre-training strategy is implemented by an encoder-decoder architecture, but it is different from traditional encoder-decoder architectures such as those used in neural machine translation (NMT), as the encoder and decoder in X-MOL share the same layers. In X-MOL, the input random SMILES and output random SMILES are sent into the model simultaneously, and the output random SMILES is totally masked. In addition, only a unidirectional attention operation can be performed within the output random SMILES, which means that each character in the output random SMILES can pay attention only to itself and the previously generated characters. In this way, the shared-layer encoder-decoder architecture in X-MOL is able to unifiy the semantic comprehension of encoder and decoder, also the shared-layer architecture could reduce the number of parameters significantly compared with traditional encoder-decoder architectures. <br>
 
 ## Work-flow of X-MOL
-`........Pre-training.............................Fine-tuning..............` <br>
+`.......Pre-training.................................Fine-tuning...........` <br>
 <br>
 `.........................................|Molecular property prediction...` <br>
-`..........tremendous data|...............|Drug-drug inteartion prediction.` <br>
-`..large-scale transformer|---> X-MOL --->|Chemical reaction prediction....` <br>
-`.powerful computing power|...............|Molecule generation.............` <br>
+`..........Tremendous data|...............|Drug-drug inteartion prediction.` <br>
+`..Large-scale transformer|---> X-MOL --->|Chemical reaction prediction....` <br>
+`.Powerful computing power|...............|Molecule generation.............` <br>
 `.........................................|Molecule optimization...........` <br>
 <br>
 ![image](https://github.com/bm2-lab/X-MOL/blob/main/images/module.png) <br>
+
 ## Environment
 **we provide the pre-trained X-MOL and the script of fine-tuning X-MOL as well as the environment** <br>
 Environment: <br>
@@ -59,7 +60,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
       `while fine_tune_rep < the_numeber_of_repeating_times:` <br>
    2. **Random/scaffold split**: <br>
       - Modify `finetune_launch.py`, the code in `if __name__ == "__main__":` : <br>
-         keep the `subprocess.call("python3 pt_scaffold_split.py", shell=True)` <br>
+         Keep the `subprocess.call("python3 pt_scaffold_split.py", shell=True)` <br>
       - Modify `pt_scaffold_split.py`, the code in `if __name__ == "__main__":` : <br>
          `sep_file_ex('path_to_training_data_folder', split_func='scaffold', amp=False, ampn=(0,0,0))` <br>
          <br>
@@ -72,7 +73,6 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
    `sh train_lrtemb.sh` (knowlegde embedding) <br>
 
 ## Fine-tuning to generation tasks
-
 1. Modify the **configuration file** : <br>
    `ft_conf` <br>
    The terms that need to be modified are **high-lighted**, like : <br>
@@ -91,7 +91,6 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
    `sh train_opt.sh` (optimization tasks) <br>
 
 ## Change the number of GPUs used in the training process
-
 For **both the two type tasks** : <br>
 Modify `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
 Valid value of the two arguments in the argparse term `multip_g` <br>
