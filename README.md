@@ -20,7 +20,7 @@ Specifically, our generative pre-training strategy is implemented by an encoder-
 ![image](https://github.com/bm2-lab/X-MOL/blob/main/images/module.png) <br>
 
 ## Environment
-**we provide the pre-trained X-MOL and the script of fine-tuning X-MOL as well as the environment** <br>
+**We provide the pre-trained X-MOL and the script of fine-tuning X-MOL as well as the environment** <br>
 Environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folders <br>
 <br>
