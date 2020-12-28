@@ -17,94 +17,94 @@ Specifically, our generative pre-training strategy is implemented by an encoder-
 `.powerful computing power|...............|Molecule generation.............` <br>
 `.........................................|Molecule optimization...........` <br>
 <br>
-![image](https://github.com/bm2-lab/X-MOL/blob/main/images/fig-1_r.png) <br>
+![image](https://github.com/bm2-lab/X-MOL/blob/main/images/module.png) <br>
 ## Environment
 **we provide the pre-trained X-MOL and the script of fine-tuning X-MOL as well as the environment** <br>
-environment: <br>
+Environment: <br>
 The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrelevant and independent part, the environment (including python and nccl) should be downloaded and decompressed into both the two folders <br>
 <br>
 **The provided environment :** <br>
-    - pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
-    - environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
-    - environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
-**requirements :** <br> 
-    - python3.7 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
+    - Pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
+    - Environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+    - Environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
+**Requirements :** <br> 
+    - Python3.7 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
     - RDKit (2019.09.1.0) <br>
 
 ## Fine-tuning to prediction tasks
-1. modify the **configuration file** : <br>
+1. Modify the **configuration file** : <br>
    `conf_pre/ft_conf.sh` <br>
-   the terms that need to be modified are **high-lighted**, like : <br>
+   The terms that need to be modified are **high-lighted**, like : <br>
    `### attention, this term need to be modified` <br>
    `vocab_path="./package/molecule_dict_zinc250k"` <br>
    `### attention, this term need to be modified` <br>
    `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
    <br>
-2. fine-tuning to **classification/regression** : <br>
-   modify the `main()` in `run_classifier.py` <br>
-   1. for classification : `task_type = 'cls'` <br>
-   2. for regression : `task_type = 'reg'` <br>
+2. Fine-tuning to **classification/regression** : <br>
+   Modify the `main()` in `run_classifier.py` <br>
+   1. For classification : `task_type = 'cls'` <br>
+   2. For regression : `task_type = 'reg'` <br>
       <br>
-3. fine-tuning to **single-input/multiple-input** : <br>
-   modify the `main()` in `run_classifier.py` <br>
-   1. for single-inpt : `multi_input = False` <br>
-   2. for multiple-input : `multi_input = True` <br>
-      modify the `main()` in `finetune_launch.py`: <br>
+3. Fine-tuning to **single-input/multiple-input** : <br>
+   Modify the `main()` in `run_classifier.py` <br>
+   1. For single-inpt : `multi_input = False` <br>
+   2. For multiple-input : `multi_input = True` <br>
+      Modify the `main()` in `finetune_launch.py`: <br>
       `extend_sent = True` <br>
-      modify the `"type_vocab_size"` in model config <br>
+      Modify the `"type_vocab_size"` in model config <br>
       <br>
-4. for **molecule property prediction task** : <br>
-   1. **repeat training**: <br>
-      modify `finetune_launch.py`, the code in `if __name__ == "__main__":` : <br>
+4. For **molecule property prediction task** : <br>
+   1. **Repeat training**: <br>
+      Modify `finetune_launch.py`, the code in `if __name__ == "__main__":` : <br>
       `while fine_tune_rep < the_numeber_of_repeating_times:` <br>
-   2. **random/scaffold split**: <br>
-      - modify `finetune_launch.py`, the code in `if __name__ == "__main__":` : <br>
+   2. **Random/scaffold split**: <br>
+      - Modify `finetune_launch.py`, the code in `if __name__ == "__main__":` : <br>
          keep the `subprocess.call("python3 pt_scaffold_split.py", shell=True)` <br>
-      - modify `pt_scaffold_split.py`, the code in `if __name__ == "__main__":` : <br>
+      - Modify `pt_scaffold_split.py`, the code in `if __name__ == "__main__":` : <br>
          `sep_file_ex('path_to_training_data_folder', split_func='scaffold', amp=False, ampn=(0,0,0))` <br>
          <br>
-5. if the **vocab list** needs to be extended :<br>
-   modify the `main()` in `finetune_launch.py` : <br>
+5. If the **vocab list** needs to be extended :<br>
+   Modify the `main()` in `finetune_launch.py` : <br>
     `extend_vocab = False` <br>
    <br>
-6. **run** : <br>
+6. **Run** : <br>
    `sh train_ft.sh` <br>
    `sh train_lrtemb.sh` (knowlegde embedding) <br>
 
 ## Fine-tuning to generation tasks
 
-1. modify the **configuration file** : <br>
+1. Modify the **configuration file** : <br>
    `ft_conf` <br>
-   the terms that need to be modified are **high-lighted**, like : <br>
+   The terms that need to be modified are **high-lighted**, like : <br>
    `### attention, this term need to be modified` <br>
    `vocab_path="./package/molecule_dict_zinc250k"` <br>
    `### attention, this term need to be modified` <br>
    `CONFIG_PATH="./package/ernie_zinc250k_config.json"` <br>
    <br>
-2. if the **vocab list** needs to be extended : <br>
-   modify the `main()` in `finetune_launch_local.py`: <br>
+2. If the **vocab list** needs to be extended : <br>
+   Modify the `main()` in `finetune_launch_local.py`: <br>
     `extend_vocab = True` <br>
     `extend_fc = True` <br>
    <br>
-3. **run** : <br>
+3. **Run** : <br>
    `sh train_ft.sh` (DL&GD generation tasks) <br>
    `sh train_opt.sh` (optimization tasks) <br>
 
 ## Change the number of GPUs used in the training process
 
-for **both the two type tasks** : <br>
-modify `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
-valid value of the two arguments in the argparse term `multip_g` <br>
+For **both the two type tasks** : <br>
+Modify `finetune_launch.py` (`finetune_launch_local.py` in generation tasks) <br>
+Valid value of the two arguments in the argparse term `multip_g` <br>
     1. `nproc_per_node` : GPU numbers <br>
     2. `selected_gpus` : GPU ids<br>
 
 ## Extend the vocab list
-**the rules in the extension of vocabulary list** : <br>
-    1. the extension must based on the `X-MOL_dict`, as well as the vocabularg list used in pre_training. <br>
-    2. the extended vocab must be placed behind the original vocabs (the index of new vocabs is start from 122). <br>
-    3. do not forget to turn on the `extend_vocab` in the `finetune_launch.py/finetune_launch_local.py`. <br>
-    4. do not forget to modify the `"vocab_size"` in model config <br>
-    5. once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
+**The rules in the extension of vocabulary list** : <br>
+    1. The extension must based on the `X-MOL_dict`, as well as the vocabularg list used in pre_training. <br>
+    2. The extended vocab must be placed behind the original vocabs (the index of new vocabs is start from 122). <br>
+    3. Do not forget to turn on the `extend_vocab` in the `finetune_launch.py/finetune_launch_local.py`. <br>
+    4. Do not forget to modify the `"vocab_size"` in model config <br>
+    5. Once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
 
 ## Contact
 1810538@tongji.edu.cn or qiliu@tongji.edu.cn
