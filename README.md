@@ -17,7 +17,7 @@ Specifically, our generative pre-training strategy is implemented by an encoder-
 `.powerful computing power|...............|Molecule generation.............` <br>
 `.........................................|Molecule optimization...........` <br>
 <br>
-![image](https://github.com/bm2-lab/X-MOL/blob/main/images/fig-1_r.pdf) <br>
+![image](https://github.com/bm2-lab/X-MOL/blob/main/images/fig-1_r.png) <br>
 ## Environment
 **we provide the pre-trained X-MOL and the script of fine-tuning the X-MOL as well as the environment** <br>
 environment: <br>
