@@ -86,7 +86,7 @@ class ErnieModel(object):
 
     def _build_model(self, src_ids, position_ids, sentence_ids, input_mask):
         # padding id in vocabulary must be set to 0
-        fluid.layers.Print(src_ids, summarize=-1, message='inputSMILES@'+ str(round(time(),2))[4:])
+        # fluid.layers.Print(src_ids, summarize=-1, message='inputSMILES@'+ str(round(time(),2))[4:])
         emb_out = fluid.layers.embedding(
             input=src_ids,
             size=[self._voc_size, self._emb_size],
