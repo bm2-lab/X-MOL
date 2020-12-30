@@ -26,7 +26,7 @@ The fine-tuning of X-MOL to prediction tasks and generation tasks are two irrele
 <br>
 **The provided environment :** <br>
     - Pre_trained X-MOL : https://1drv.ms/u/s!BIa_gVKaCDngi2S994lMsp-Y3TWK?e=l5hbxi <br>
-    - Environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2OSr1svGMLLb2Xw?e=wwXaqP <br>
+    - Environment-python : https://1drv.ms/u/s!Aoa_gVKaCDngi2U1ip8w2HxjIt4-?e=koGl4c <br>
     - Environment-nccl : https://1drv.ms/u/s!Aoa_gVKaCDngi2J7pOh7WdKR-pMa?e=GVlYbd <br>
 **Requirements :** <br> 
     - Python3.7 (although the environment of model traininng, python2, is provided above, the process of preprocessing data and model evaluation is based on a python3 environment) <br>
