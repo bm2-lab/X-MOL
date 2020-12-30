@@ -228,7 +228,7 @@ def sep_file_ex(dir, prop=(0.8,0.1,0.1), sfn=('train','dev','test'), split_func=
 if __name__ == '__main__':
     # ampn: -1: n_len/2, 0: no amp, n: n
     path=sys.argv[1]
-    if path != 'bbbp':
+    if path not in ('hiv', 'bace_c', 'bbbp'):
         sep_file_ex('package/task_data/{0}'.format(path), split_func='random', amp=False, ampn=(0,0,0), save_file=True)
     else:
         sep_file_ex('package/task_data/bbbp', split_func='scaffold', amp=False, ampn=(0,0,0), save_file=True)
