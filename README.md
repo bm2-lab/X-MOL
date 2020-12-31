@@ -114,7 +114,7 @@ Valid value of the two arguments in the argparse term `multip_g` <br>
 **Warm start** : <br>
 Fine-tuning the model on the basis of X-MOL <br>
 Set parameter `init_model` in `ft_conf/ft_conf.sh` as `init_model="path/to/decompressed/X-MOL"` <br>
-**Warm start** : <br>
+**Cold start** : <br>
 Training the model from scratch <br>
 Set parameter `init_model` in `ft_conf/ft_conf.sh` as `init_model=""` <br>
 
