@@ -254,7 +254,7 @@ class MolTokenizer(object):
     def __init__(self, vocab_file, do_lower_case=False):
         self.vocab = load_vocab(vocab_file)
         self.inv_vocab = {v: k for k, v in self.vocab.items()}
-        self.tokenizer = WordpieceTokenizer(vocab=self.vocab)
+        #self.tokenizer = WordpieceTokenizer(vocab=self.vocab)
 
     def tokenize(self, smi):
         tokens = []
@@ -292,67 +292,6 @@ class MolTokenizer(object):
         ret = [token for token in tokens]
         return ret
 
-
-class SentencePieceTokenizer(object):
-  """Runs end-to-end tokenziation."""
-
-  def __init__(self, vocab_file, do_lower_case=True, spm_model_file='./package/sp.model'):
-    self.vocab = None
-    self.sp_model = None
-    if spm_model_file:
-      self.sp_model = spm.SentencePieceProcessor()
-      self.sp_model.Load(spm_model_file)
-      self.vocab = load_vocab(vocab_file)
-    else:
-      raise ValueError('sentencepiece use spm by default')
-    self.inv_vocab = {v: k for k, v in self.vocab.items()}
-
-  def tokenize(self, text):
-    #text = convert_to_unicode(text)
-    text = preprocess_text(text, lower=True)
-    if self.sp_model:
-      split_tokens = encode_pieces(self.sp_model, text, return_unicode=True)
-    else:
-      raise ValueError('albert use spm by default')
-
-    return split_tokens
-
-  def convert_tokens_to_ids(self, tokens):
-    """
-    if self.sp_model:
-      return [self.sp_model.PieceToId(
-          printable_text(token)) for token in tokens]
-    else:
-      return convert_by_vocab(self.vocab, tokens)
-    """
-    ret = []
-    unk_id = self.vocab["<unk>"]
-    for token in tokens:
-      if token in self.vocab:
-        ret.append(self.vocab[token])
-      else:
-        ret.append(unk_id)
-    return ret
-
-  def convert_ids_to_tokens(self, ids):
-    if self.sp_model:
-      return [self.sp_model.IdToPiece(id_) for id_ in ids]
-    else:
-      return convert_by_vocab(self.inv_vocab, ids)
-
-  def merge_subword(self, tokens):
-    ret = []
-    for token in tokens:
-      if token.startswith(u"▁"):
-        ret.append(token[1:])
-      else:
-        if len(ret):
-          ret[-1] += token
-        else:
-          ret.append(token)
-
-    ret = [token for token in ret if token]
-    return ret
   
 
 class CharTokenizer(object):
@@ -490,109 +429,6 @@ class BasicTokenizer(object):
             else:
                 output.append(char)
         return "".join(output)
-
-
-class WordsegTokenizer(object):
-    """Runs Wordseg tokenziation."""
-
-    def __init__(self, vocab_file, do_lower_case=True, unk_token="[UNK]", 
-            split_token="\1"):
-        self.vocab = load_vocab(vocab_file)
-        self.inv_vocab = {v: k for k, v in self.vocab.items()}
-        self.tokenizer = sp.SentencePieceProcessor()
-        self.tokenizer.Load(vocab_file + ".model")
-        
-        self.do_lower_case = do_lower_case
-        self.unk_token = unk_token
-        self.split_token = split_token
-
-    def tokenize(self, text):
-        """Tokenizes a piece of text into its word pieces.
-
-        Returns:
-            A list of wordpiece tokens.
-        """
-        text = text.lower() if self.do_lower_case else text 
-        text = convert_to_unicode(text)
-        
-        output_tokens = []
-        for token in text.split(self.split_token):
-            if token in self.vocab:
-                output_tokens.append(token)
-            else:
-                sp_tokens = self.tokenizer.EncodeAsPieces(token)
-                for sp_token in sp_tokens:
-                    if sp_token in self.vocab:
-                        output_tokens.append(sp_token)
-        return output_tokens
-    
-    def convert_tokens_to_ids(self, tokens):
-        return convert_by_vocab(self.vocab, tokens)
-
-    def convert_ids_to_tokens(self, ids):
-        return convert_by_vocab(self.inv_vocab, ids)
-
-
-class WordpieceTokenizer(object):
-    """Runs WordPiece tokenziation."""
-
-    def __init__(self, vocab, unk_token="[UNK]", max_input_chars_per_word=100):
-        self.vocab = vocab
-        self.unk_token = unk_token
-        self.max_input_chars_per_word = max_input_chars_per_word
-
-    def tokenize(self, text):
-        """Tokenizes a piece of text into its word pieces.
-
-        This uses a greedy longest-match-first algorithm to perform tokenization
-        using the given vocabulary.
-
-        For example:
-            input = "unaffable"
-            output = ["un", "##aff", "##able"]
-
-        Args:
-            text: A single token or whitespace separated tokens. This should have
-                already been passed through `BasicTokenizer.
-
-        Returns:
-            A list of wordpiece tokens.
-        """
-
-        text = convert_to_unicode(text)
-
-        output_tokens = []
-        for token in whitespace_tokenize(text):
-            chars = list(token)
-            if len(chars) > self.max_input_chars_per_word:
-                output_tokens.append(self.unk_token)
-                continue
-
-            is_bad = False
-            start = 0
-            sub_tokens = []
-            while start < len(chars):
-                end = len(chars)
-                cur_substr = None
-                while start < end:
-                    substr = "".join(chars[start:end])
-                    if start > 0:
-                        substr = "##" + substr
-                    if substr in self.vocab:
-                        cur_substr = substr
-                        break
-                    end -= 1
-                if cur_substr is None:
-                    is_bad = True
-                    break
-                sub_tokens.append(cur_substr)
-                start = end
-
-            if is_bad:
-                output_tokens.append(self.unk_token)
-            else:
-                output_tokens.extend(sub_tokens)
-        return output_tokens
 
 
 def _is_whitespace(char):
