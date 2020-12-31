@@ -147,7 +147,7 @@ class MolTokenizer(object):
     def __init__(self, vocab_file, do_lower_case=False):
         self.vocab = load_vocab(vocab_file)
         self.inv_vocab = {v: k for k, v in self.vocab.items()}
-        self.tokenizer = WordpieceTokenizer(vocab=self.vocab)
+        #self.tokenizer = WordpieceTokenizer(vocab=self.vocab)
 
     def tokenize(self, smi):
         tokens = []
