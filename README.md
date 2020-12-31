@@ -105,5 +105,10 @@ Valid value of the two arguments in the argparse term `multip_g` <br>
     4. Do not forget to modify the `"vocab_size"` in model config <br>
     5. Once the vocabulary list is extended, the pre-trained model will be changed, please make sure you have a good backup of X-MOL. <br>
 
+## Fine-tuning output
+**Path of saving the log file and saved model** : <br>
+    1. Log files are saved in `./log/`, a launching log and n running log will be saved (n = the number of GPUs). <br>
+    2. The saved model (parameter `SAVE_STEPS=1000` in ft_conf.sh incidates that the model will be stored every 1000 steps during the training process) will be stored in `./checkpoints/`. <br>
+    
 ## Contact
 1810538@tongji.edu.cn or qiliu@tongji.edu.cn
